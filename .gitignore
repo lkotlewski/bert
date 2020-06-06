@@ -117,3 +117,12 @@ dmypy.json
 
 #Intellij
 .idea/
+
+#Bert model files
+bert
+
+#Directories automatically created
+error
+input
+result
+success

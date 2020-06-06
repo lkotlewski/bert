@@ -395,12 +395,15 @@ class PlwiProcessor(DataProcessor):
         """See base class."""
         return ["true", "false"]
 
+    def get_examples_from(self, path):
+        """See base class."""
+        return self._create_examples(
+            self._read_tsv(path), "eval")
+
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
         examples = []
         for (i, line) in enumerate(lines):
-            if i == 0:
-                continue
             guid = "%s-%s" % (set_type, i)
             print(guid)
             text_a = tokenization.convert_to_unicode(line[4])
