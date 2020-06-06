@@ -57,7 +57,7 @@ class BertMatchPredictor:
             eval_batch_size=self.config.batch_size,
             predict_batch_size=self.config.batch_size)
 
-    def predict(self, dir_in, filename, dir_out, logger=None):
+    def predict(self, dir_in, filename, dir_out):
         predict_examples = self.processor.get_examples_from(os.path.join(dir_in, filename))
         num_actual_predict_examples = len(predict_examples)
         if self.config.use_tpu:
