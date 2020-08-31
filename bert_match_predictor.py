@@ -4,7 +4,7 @@ import tensorflow as tf
 
 import modeling
 import tokenization
-from match_prediction_config import MatchPredictionConfig
+from bert_prediction_config import BertPredictionConfig
 from run_classifier import PlwiProcessor, PaddingInputExample, file_based_convert_examples_to_features, \
     file_based_input_fn_builder, model_fn_builder
 
@@ -13,7 +13,7 @@ class BertMatchPredictor:
 
     def __init__(self):
         tf.logging.set_verbosity(tf.logging.INFO)
-        self.config = MatchPredictionConfig()
+        self.config = BertPredictionConfig()
 
         bert_config = modeling.BertConfig.from_json_file(self.config.bert_config_file)
 

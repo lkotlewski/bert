@@ -14,4 +14,5 @@ class JobExecutorConfig(object):
         self.dir_result = self.mp_config['dir_result']
         self.dir_log = self.mp_config['dir_log']
         self.interval = float(self.mp_config['interval'])
+        self.prediction = self.mp_config['prediction']
 

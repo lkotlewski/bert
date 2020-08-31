@@ -8,13 +8,20 @@ from tensorflow import gfile
 
 from bert_match_predictor import BertMatchPredictor
 from job_executor_config import JobExecutorConfig
+from keyed_vector_match_predictor import KeyedVectorsFormatPredictor
 
 
 def execute_job():
     config = JobExecutorConfig()
     make_needed_dirs(config)
     configure_logging(config)
-    match_predictor = BertMatchPredictor()
+    if config.prediction == 'BERT':
+        match_predictor = BertMatchPredictor()
+    elif config.prediction == 'KEYED_VECTORS':
+        match_predictor = KeyedVectorsFormatPredictor()
+    else:
+        raise Exception("Wrong prediction mode")
+
     while True:
         logging.info("job iteration started")
         dir_in = config.dir_in
